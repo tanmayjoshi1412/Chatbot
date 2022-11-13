@@ -1,0 +1,63 @@
+<div id="chatTogglerDiv" style="opacity: 1; display: block; opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: -5%;
+  width: 280px;
+  opacity: 1;
+  display: block;
+  padding: 16px 20px;"><img id="chatTogglerImg" src="https://hbchat.senseforth.com/HDFC_Chat/assets/EVA_newlogo2.0.png"
+                            (click)="toggleChat(true)">
+</div>
+
+<div class="form-popup" *ngIf="showChatBox"  #window [scrollTop]="window.scrollHeight">
+  <div class="ui-corner-top ui-chatbox-titlebar">
+    <div class="torso title-torso"></div>
+    <span>Ask RJ</span>
+    <a class="close" (click)="toggleChat(false)">&times;</a>
+  </div>
+  <div style="position: fixed">
+
+  </div>
+
+  <div class="chat-box" >
+    <ng-container *ngFor="let message of messages">
+
+      <div *ngIf="message.author === 'BOT'" class="message from">
+        <div class="menu-header-message">{{message.headerMessage}}</div>
+
+        <div *ngFor="let content of message.questions;">
+          <span class="quicklinks-action-elem">
+            <div *ngIf="content.enable == true">
+              <span (click)="messageFromUser(content)">{{content.message}}</span>
+            </div>
+            <div *ngIf="content.enable == false">
+              <span >{{content.message}}</span>
+            </div>
+          </span>
+
+        </div>
+      </div>
+
+      <div *ngIf="message.author === 'USER'" class="message to">
+        <div *ngFor="let content of message.questions;">
+          {{content.message}}
+        </div>
+      </div>
+
+    </ng-container>
+    <label *ngIf="messages.length == 0; else dialogInfo">Your message</label>
+    <!-- <ng-template #dialogInfo>
+       <div style="position:absolute; bottom:0px; height:200px; left:0px; right:0px; overflow:hidden;">
+         <span [className]="'float-right'">Total messages: {{messages.length}}</span>
+       </div>
+
+     </ng-template>-->
+    <div class="row">
+      <div class="col-12 form-group chat-input">
+        <input class="form-control" placeholder="" [(ngModel)]="userInput" (keyup.enter)="onUserInput()">
+      </div>
+    </div>
+  </div>
+</div>
+
+

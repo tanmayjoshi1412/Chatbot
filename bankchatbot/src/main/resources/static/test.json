@@ -1,0 +1,29 @@
+{
+  "districtData": {
+    "Latur": {
+      "Latur": [
+        {
+          "officeName": "Tilaknagar Latur S.O",
+          "pincode": 413531,
+          "taluk": "Latur",
+          "districtName": "Latur",
+          "stateName": "MAHARASHTRA"
+        },
+        {
+          "officeName": "Borgaon S.O (Latur)",
+          "pincode": 413511,
+          "taluk": "Latur",
+          "districtName": "Latur",
+          "stateName": "MAHARASHTRA"
+        },
+        {
+          "officeName": "Ekurga B.O",
+          "pincode": 413511,
+          "taluk": "Latur",
+          "districtName": "Latur",
+          "stateName": "MAHARASHTRA"
+        }
+      ]
+    }
+  }
+}

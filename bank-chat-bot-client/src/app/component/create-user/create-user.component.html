@@ -1,0 +1,97 @@
+<div class="col-md-6 col-sm-12">
+  <div class="login-form">
+    <form [formGroup]="userForm" *ngIf="userForm">
+      <div class="row">
+        <div class="col-4 form-group">
+          <label>{{LABEL.USER_ERR_FIRST_NAME}}</label>
+          <input formControlName="firstName" type="text" class="form-control" placeholder="First name"
+                 [ngClass]="{'error-border': !isValidControl('firstName')}">
+        </div>
+        <div class="col-4 form-group">
+          <label>{{LABEL.USER_ERR_LAST_NAME}}</label>
+          <input formControlName="lastName" type="text" class="form-control" placeholder="Last name"
+                 [ngClass]="{'error-border': !isValidControl('lastName')}">
+        </div>
+        <div class="col-4 form-group">
+          <label>{{LABEL.USER_ERR_MIDDLE_NAME}}</label>
+          <input formControlName="middleName" type="text" class="form-control" placeholder="Middle name">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4 form-group">
+          <label>{{LABEL.USER_AGE}}</label>
+          <input formControlName="age" type="text" class="form-control" placeholder="Age"
+                 [ngClass]="{'error-border': !isValidControl('age')}">
+        </div>
+        <div class="col-4 form-group">
+          <label>{{LABEL.USER_EMAIL_ID}}</label>
+          <input formControlName="emailId" type="text" class="form-control" placeholder="Email ID"
+                 [ngClass]="{'error-border': !isValidControl('emailId')}">
+        </div>
+        <div class="col-4 form-group">
+          <label>{{LABEL.CHALAN_ERR_CONTACT_NUMBER}}</label>
+          <input formControlName="contactNumber" type="text" class="form-control" placeholder="Contact Number"
+                 [ngClass]="{'error-border': !isValidControl('contactNumber')}">
+        </div>
+      </div>
+      <div formGroupName="address">
+        <div class="row">
+          <div class="col-4">
+            <label for="state">State</label>
+            <input formControlName="state" type="text" class="form-control" placeholder="State" id="state">
+          </div>
+          <div class="col-4">
+            <label for="district">District</label>
+            <input formControlName="district" type="text" class="form-control" placeholder="District" id="district">
+          </div>
+          <div class="col-4">
+            <label for="city">City</label>
+            <input formControlName="city" type="text" class="form-control" placeholder="City" id="city">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <label for="pincode">Pincode</label>
+            <input formControlName="pincode" type="text" class="form-control" placeholder="Pincode" id="pincode">
+          </div>
+          <div class="col-4">
+            <label for="addressLine1">Address Line 1</label>
+            <input formControlName="addressLine1" type="text" class="form-control" placeholder="Address Line 1"
+                   id="addressLine1">
+          </div>
+          <div class="col-4">
+            <label for="addressLine2">Address Line 2</label>
+            <input formControlName="addressLine2" type="text" class="form-control" placeholder="Address Line 2"
+                   id="addressLine2">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <label for="landMark">Landmark</label>
+            <input formControlName="landMark" type="text" class="form-control" placeholder="Landmark"
+                   id="landMark">
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-4 form-group">
+          <label>{{LABEL.USER_ERR_AADHAR_NUMBER}}</label>
+          <input formControlName="aadharNumber" type="text" class="form-control" placeholder="Aadhar Number"
+                 [ngClass]="{'error-border': !isValidControl('aadharNumber')}">
+        </div>
+        <div class="col-4 form-group">
+          <label>{{LABEL.USER_PASSWORD}}</label>
+          <input formControlName="accessKey" type="password" class="form-control" placeholder="*********"
+                 [ngClass]="{'error-border': !isValidControl('accessKey')}">
+        </div>
+      </div>
+    </form>
+
+    <div class="">
+      <button type="button" class="btn btn-outline-dark" (click)="cancleUserSave()">Close</button>
+      <button type="submit" class="btn btn-secondary" (click)="saveuser()">Save</button>
+    </div>
+
+  </div>
+</div>
