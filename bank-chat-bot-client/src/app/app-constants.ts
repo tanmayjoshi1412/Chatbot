@@ -76,7 +76,7 @@ export class AppConstants {
   public static PROFILE_PINCODE: string = "Pincode";
 
 
-  public static FIRST_HEADER_MESSAGE : string="I am RJ, your personal assistant to help you with HDFC Bank related queries";
+  public static FIRST_HEADER_MESSAGE : string="I am RJ, your personal assistant to help you with RJ Bank related queries";
   public static CLOSING_THANKS_MSG : string= 'Thank You..... Your service would be addressed soon!';
   public static MAIN_MENU : string= 'MAIN_MENU';
   public static CLOSE_CHAT_WINDOW : string= 'CLOSE';
