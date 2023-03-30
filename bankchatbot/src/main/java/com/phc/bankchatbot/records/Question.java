@@ -16,6 +16,18 @@ public class Question {
     boolean active;
     String messageForNextMenu;
 
+    public Question(String id, String message, String parentId, boolean isInputRequired, boolean active, String messageForNextMenu) {
+        this.id = id;
+        this.message = message;
+        this.parentId = parentId;
+        this.isInputRequired = isInputRequired;
+        this.active = active;
+        this.messageForNextMenu = messageForNextMenu;
+    }
+
+    public Question() {
+    }
+
     public String getId() {
         return id;
     }

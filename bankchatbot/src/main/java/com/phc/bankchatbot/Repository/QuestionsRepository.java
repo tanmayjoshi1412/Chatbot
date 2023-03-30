@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface QuestionsRepository  extends MongoRepository<Question, String> {
     List<Question> findByParentIdAndActive(String parentId, boolean active);
     Optional<Question> findById(String id);
+    List<Question> findByMessage(String message);
 }

@@ -13,6 +13,7 @@ import { AlertComponent } from './shared/alert/alert.component';
 import { LoginComponent } from './component/login/login.component';
 import { CreateUserComponent } from './component/create-user/create-user.component';
 import { UserDetailsComponent } from './component/user-details/user-details.component';
+import {NgxSpinnerModule} from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UserDetailsComponent } from './component/user-details/user-details.comp
     HttpClientModule,
     AgGridModule.withComponents([]),
     FormsModule,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    NgxSpinnerModule
   ],
   providers: [
   ],

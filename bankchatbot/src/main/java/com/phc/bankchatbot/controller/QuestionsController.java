@@ -23,4 +23,9 @@ public class QuestionsController {
     public Response getQuestionsById(String id, boolean active){
         return  questionsService.getQuestionsById(id, active);
     }
+
+    @PostMapping("getResponseOnUserInput")
+    public Response getResponseOnUserInput(@RequestBody Question question) throws Exception {
+        return questionsService.getQuestionByUserInput(question);
+    }
 }

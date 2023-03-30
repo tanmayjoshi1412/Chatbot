@@ -17,4 +17,17 @@
   text-align: left;
 }
 
+.create-user{
+  margin: 15% -100% 0% 3% !important;
+}
+
+.bcb-btn{
+  margin-right: 1%;
+}
+
+.bcb-sec-btn{
+  color: #fff;
+  background-color: #195b96;
+  border-color: #1877cb;
+}
 

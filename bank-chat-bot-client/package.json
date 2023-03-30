@@ -34,6 +34,7 @@
     "material-icons": "^0.5.3",
     "ng-multiselect-dropdown": "^0.2.14",
     "ngx-bootstrap": "^6.2.0",
+    "ngx-spinner": "^11.0.2",
     "npm": "^7.6.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

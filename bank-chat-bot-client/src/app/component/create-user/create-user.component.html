@@ -1,5 +1,6 @@
+<div  class="create-user" style="margin: 6% -100% 0% 0% !important;">
 <div class="col-md-6 col-sm-12">
-  <div class="login-form">
+  <div >
     <form [formGroup]="userForm" *ngIf="userForm">
       <div class="row">
         <div class="col-4 form-group">
@@ -89,9 +90,10 @@
     </form>
 
     <div class="">
-      <button type="button" class="btn btn-outline-dark" (click)="cancleUserSave()">Close</button>
-      <button type="submit" class="btn btn-secondary" (click)="saveuser()">Save</button>
+      <button type="button" class="btn btn-outline-dark bcb-btn" (click)="cancleUserSave()">Close</button>
+      <button type="submit" class="btn btn-secondary bcb-btn bcb-sec-btn" (click)="saveuser()">Save</button>
     </div>
 
   </div>
+</div>
 </div>

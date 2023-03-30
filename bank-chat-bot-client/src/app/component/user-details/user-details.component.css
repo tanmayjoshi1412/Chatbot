@@ -64,7 +64,6 @@
 .message.from {
   background-color: #E5E4E9;
   color: #363636;
-  margin-right: 100px;
 }
 .message.to + .message.to,
 .message.from + .message.from {
@@ -124,3 +123,20 @@
   font-weight: bold;
   padding-bottom: 10%;
 }
+
+.hdfc_bck_img{
+  width: 100%;
+}
+
+
+.response-action-elem {
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-right: 11px;
+  font-size: 11px;
+  color: #344548;
+  display: inline-block;
+  margin-bottom: 11px;
+  cursor: pointer;
+}
+

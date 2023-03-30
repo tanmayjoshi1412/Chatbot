@@ -20,4 +20,8 @@ export class QuestionService {
   createUser(question : Question){
     return this.httpClient.post("api/saveUser", question);
   }
+
+  public getResponseOnUserInput(question : Question){
+    return this.httpClient.post("api/getResponseOnUserInput", question);
+  }
 }

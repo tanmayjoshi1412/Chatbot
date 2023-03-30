@@ -5,6 +5,7 @@ import {Message} from "../../model/Message";
 import {QuestionService} from "../../service/question.service";
 import {Question} from "../../model/Question";
 import {AppConstants} from "../../app-constants";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'user-details',
@@ -25,7 +26,8 @@ export class UserDetailsComponent implements OnInit {
   readonly LABEL = AppConstants;
 
   constructor(private userService: UserService,
-              private questionService: QuestionService) {
+              private questionService: QuestionService,
+              private spinnerService: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
@@ -57,6 +59,8 @@ export class UserDetailsComponent implements OnInit {
   }
 
   toggleChat(showChatBox: boolean) {
+    if(!showChatBox)
+      this.messages = []
     if (this.messages.length == 0) {
       this.getQuestions(this.BOT, "0", true, "");
     }
@@ -65,6 +69,7 @@ export class UserDetailsComponent implements OnInit {
 
   // @ts-ignore
   getQuestions(from: string, id: string, active: boolean, headerMessage: string): Question {
+    this.spinnerService.show();
 
     if (id === '0') {
       headerMessage = this.LABEL.FIRST_HEADER_MESSAGE;
@@ -82,10 +87,13 @@ export class UserDetailsComponent implements OnInit {
         if (respQuestions.length == 0) {
           this.continueOrClose();
         }
+      this.spinnerService.hide();
       }, error => {
         console.log("error while fetching data for id : " + id, error)
         return [];
+      this.spinnerService.hide();
       }, () => {
+      this.spinnerService.hide();
       }
     )
   }
@@ -97,7 +105,28 @@ export class UserDetailsComponent implements OnInit {
     questions.push(question);
     this.createMessage(this.USER, questions, "");
     this.userInput = '';
-    this.createBotClosingMessage();
+
+    this.questionService.getResponseOnUserInput(question);
+    this.questionService.getResponseOnUserInput(question).subscribe(resp => {
+        this.enableDisableQuestions(false);
+        var respQuestions = resp["response"];
+
+        respQuestions.forEach(q => {
+          q.enable = true;
+        });
+
+        this.messages.push(new Message(this.BOT, respQuestions, ''));
+        if (respQuestions.length == 0) {
+          this.continueOrClose();
+        }
+      }, error => {
+        console.log("error while fetching data for id : " , error)
+        return [];
+      }, () => {
+      }
+    )
+
+    //this.createBotClosingMessage();
 
   }
 
