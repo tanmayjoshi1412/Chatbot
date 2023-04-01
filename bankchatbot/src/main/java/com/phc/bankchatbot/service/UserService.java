@@ -27,7 +27,7 @@ public class UserService {
     }
 
     public Response<User> saveUser(User user) {
-        User response = usersRepository.findByEmailId(user.getEmailId());
+        User response = usersRepository.findFirstByEmailId(user.getEmailId());
         if(null != response)
            return new Response<User>("","User Already Exists",null);
         usersRepository.save(user);
@@ -38,7 +38,7 @@ public class UserService {
 
         if(null == user || StringUtils.isBlank(user.getEmailId()))
             return null;
-        User response = usersRepository.findByEmailId(user.getEmailId());
+        User response = usersRepository.findFirstByEmailId(user.getEmailId());
         if(null != response && response.getAccessKey().equals(user.getAccessKey())){
             return  response;
         }else{

@@ -14,6 +14,8 @@ import { LoginComponent } from './component/login/login.component';
 import { CreateUserComponent } from './component/create-user/create-user.component';
 import { UserDetailsComponent } from './component/user-details/user-details.component';
 import {NgxSpinnerModule} from "ngx-spinner";
+import { AngularNotificationModule} from 'angular-notification-alert';
+import { NotificationsAlertComponent } from './component/notifications-alert/notifications-alert.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import {NgxSpinnerModule} from "ngx-spinner";
     AlertComponent,
     LoginComponent,
     CreateUserComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    NotificationsAlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import {NgxSpinnerModule} from "ngx-spinner";
     AgGridModule.withComponents([]),
     FormsModule,
     NgMultiSelectDropDownModule.forRoot(),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    AngularNotificationModule
   ],
   providers: [
   ],

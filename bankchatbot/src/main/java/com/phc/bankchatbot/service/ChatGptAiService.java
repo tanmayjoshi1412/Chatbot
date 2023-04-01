@@ -30,6 +30,7 @@ public class ChatGptAiService {
 
     public List<Question> getQuestions(String query, String id) {
         String responseMessage = getGptResponse(query);
+        responseMessage.replace("HDFC", "RJFC");
         List<String> questions = responseMessage.lines().collect(Collectors.toList());
         questions.removeAll(Collections.singleton(""));
         questions.removeAll(Collections.singleton(null));

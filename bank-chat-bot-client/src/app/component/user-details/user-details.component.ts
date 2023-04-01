@@ -32,7 +32,6 @@ export class UserDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedinUser = this.userService.getLoggedinUserData();
-    console.log(this.loggedinUser)
   }
 
   messageFromUser(previousQuestion: Question) {

@@ -72,6 +72,7 @@ export class AppConstants {
   public static PROFILE_LANDMARK: string = "Landmark";
   public static PROFILE_CITY: string = "City";
   public static PROFILE_STATE: string = "State";
+  public static PROFILE_DISTRICT: string = "District";
   public static PROFILE_COUNTRY: string = "Country";
   public static PROFILE_PINCODE: string = "Pincode";
 

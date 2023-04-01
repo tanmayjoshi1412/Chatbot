@@ -140,3 +140,10 @@
   cursor: pointer;
 }
 
+.user-name{
+  float: right;
+  margin-top: 4%;
+  color: #1073d9;
+  font-weight: bold;
+}
+

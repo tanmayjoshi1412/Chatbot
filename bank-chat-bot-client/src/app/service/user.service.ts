@@ -18,6 +18,7 @@ export class UserService {
 
 
   setUserData(userData : any){
+    debugger;
       this.userData = userData;
       this.userLogin.next(userData);
 

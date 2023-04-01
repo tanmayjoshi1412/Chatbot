@@ -7,3 +7,8 @@
   background-color: #195b96;
   border-color: #1877cb;
 }
+
+.negative-value-item{
+  font-weight: bold;
+  color: #a50606;
+}
