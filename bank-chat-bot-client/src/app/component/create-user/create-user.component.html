@@ -1,5 +1,15 @@
 <div class="create-user" style="margin: 6% -100% 0% 0% !important;">
   <notifications-alert></notifications-alert>
+  <ngx-spinner bdOpacity = 0.9
+               bdColor = "#f4f4f9"
+               size = "medium"
+               color = "#1010ee"
+               type = "ball-clip-rotate"
+               [fullScreen] = "true"
+               bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise"></ngx-spinner>
+  <div class="header">
+    <h2>Account Opening Form</h2>
+  </div>
   <div class="col-md-6 col-sm-12">
     <div>
       <form [formGroup]="userForm" *ngIf="userForm">
@@ -95,8 +105,8 @@
       </form>
 
       <div class="">
-        <button type="button" class="btn btn-outline-dark bcb-btn" (click)="cancleUserSave()">Close</button>
-        <button type="submit" class="btn btn-secondary bcb-btn bcb-sec-btn" (click)="saveuser()">Save</button>
+        <button type="button" class="btn btn-outline-dark bcb-btn" (click)="cancleUserSave()">Cancel</button>
+        <button type="submit" class="btn btn-secondary bcb-btn bcb-sec-btn" (click)="saveuser()">Request</button>
       </div>
 
     </div>

@@ -29,5 +29,13 @@
   color: #fff;
   background-color: #195b96;
   border-color: #1877cb;
+  width: 100%;
 }
 
+
+.login-btn{
+  background-color: #42b72a;
+  border-color: #42b72a;
+  color:white;
+  width: 100%;
+}

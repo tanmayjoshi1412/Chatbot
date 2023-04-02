@@ -10,21 +10,8 @@ import {NgxSpinnerService} from "ngx-spinner";
 })
 export class AppComponent {
   title = 'RJFC BANK';
-  userData: any;
 
-  ngOnInit(): void {
-    this.userService.userLogin$.subscribe(user => {
-      this.userData = this.userService.getLoggedinUserData();
-    })
-  }
-
-
-  constructor(private userService: UserService) {
-    debugger
-
-    this.userService.userLogin$.subscribe(user => {
-      this.userData = this.userService.getLoggedinUserData();
-    })
+  constructor() {
   }
 
 

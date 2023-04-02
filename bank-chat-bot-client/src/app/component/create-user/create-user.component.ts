@@ -9,6 +9,7 @@ import {AlertService} from "../../service/alert.service";
 import {Router} from "@angular/router";
 import {NotificationsAlertComponent} from "../notifications-alert/notifications-alert.component";
 import {CustomValidators} from "../../Validator/number";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'createUser',
@@ -28,7 +29,8 @@ export class CreateUserComponent implements OnInit {
   constructor(private builder: FormBuilder,
               private userService: UserService,
               private alertService: AlertService,
-              private router: Router) {
+              private router: Router,
+              private spinnerService: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
@@ -44,12 +46,11 @@ export class CreateUserComponent implements OnInit {
   }
 
   createEmployeeForm() {
-    debugger;
     this.userForm = this.builder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       middleName: new FormControl(),
-      age: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+      age: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{2}$")]],
       contactNumber:['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{12}$")]],
       emailId: ['',  Validators.required,Validators.email],
 
@@ -77,22 +78,23 @@ export class CreateUserComponent implements OnInit {
     var userData: User = this.userForm?.value
     let errors: FieldError[] = this.validateUserDetails();
     this.formErrors = this.customValidation(userData, errors);
-debugger;
-    if (errors.length === 0) {
+    this.spinnerService.show();
+    if (this.formErrors.length === 0) {
       this.userService.createUser(userData).subscribe(userData => {
+          this.spinnerService.hide();
           this.userData = userData;
           var formData: FormData = new FormData();
-          debugger
 
           this.notificationsAlert.successeNotification({
-            message: "User created successfully",
-            title: "Please Login to continue"
+            title: "Account Requested",
+            message: "Please check your email for the account conformation"
           });
           setTimeout(() => {
             this.router.navigate(['/login']);
           }, 5000);
 
         }, error => {
+          this.spinnerService.hide();
           this.alertService.error(('Error while saving employee...'), this.options);
           this.notificationsAlert.errorNotification({message: 'Error while creating user...', title: "Error"});
         }, () => {
@@ -103,6 +105,7 @@ debugger;
         title: ("Welcome " + this.userData.firstName + " " + this.userData.lastName)
       });
     } else {
+      this.spinnerService.hide();
       this.notificationsAlert.errorNotification({
         message: this.formErrors.join(this.LABEL.NEWLINE),
         title: this.LABEL.MISSING_FIELDS
@@ -176,10 +179,6 @@ debugger;
         formErrors.push(errorCount + this.LABEL.DOT_SPACE + this.LABEL.PROFILE_ADDRESS_LINE + " 1");
         errorCount++;
       }
-      if (err.fieldName === 'landMark') {
-        formErrors.push(errorCount + this.LABEL.DOT_SPACE + this.LABEL.PROFILE_CITY);
-        errorCount++;
-      }
 
       if (err.fieldName === 'aadharNumber') {
         formErrors.push(errorCount + this.LABEL.DOT_SPACE + this.LABEL.USER_ERR_AADHAR_NUMBER + " & should be of length 12");
@@ -187,7 +186,7 @@ debugger;
       }
 
       if (err.fieldName === 'accessKey') {
-        formErrors.push(errorCount + this.LABEL.DOT_SPACE + this.LABEL.PROFILE_CITY);
+        formErrors.push(errorCount + this.LABEL.DOT_SPACE + this.LABEL.USER_PASSWORD);
         errorCount++;
       }
 

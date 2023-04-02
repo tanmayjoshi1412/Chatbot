@@ -16,6 +16,8 @@ import { UserDetailsComponent } from './component/user-details/user-details.comp
 import {NgxSpinnerModule} from "ngx-spinner";
 import { AngularNotificationModule} from 'angular-notification-alert';
 import { NotificationsAlertComponent } from './component/notifications-alert/notifications-alert.component';
+import { HeaderComponent } from './component/header/header.component';
+import { FotterComponent } from './component/fotter/fotter.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { NotificationsAlertComponent } from './component/notifications-alert/not
     CreateUserComponent,
     UserDetailsComponent,
     NotificationsAlertComponent,
+    HeaderComponent,
+    FotterComponent,
   ],
   imports: [
     BrowserModule,

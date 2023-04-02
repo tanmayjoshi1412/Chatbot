@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(user).subscribe(user => {
         this.loggedinUser = user;
         this.userService.setUserData(user);
+        sessionStorage.setItem("userData",JSON.stringify(user));
         this.router.navigate(['/userDetails']);
       }, error => {
         console.log("error", error)
@@ -54,5 +55,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-
+  createUser() {
+    this.router.navigate(['/createUser']);
+  }
 }

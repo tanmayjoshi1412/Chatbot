@@ -4,6 +4,7 @@ import com.phc.bankchatbot.Repository.UsersRepository;
 import com.phc.bankchatbot.Response;
 import com.phc.bankchatbot.records.User;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Locale;
@@ -12,6 +13,10 @@ import java.util.Locale;
 public class UserService {
 
     private UsersRepository usersRepository;
+
+    @Autowired
+    private AutoJobRunner autoJobRunner;
+
 
     public UserService(UsersRepository usersRepository){
         this.usersRepository=usersRepository;
@@ -26,11 +31,12 @@ public class UserService {
 
     }
 
-    public Response<User> saveUser(User user) {
+    public Response<User> saveUser(User user) throws Exception {
         User response = usersRepository.findFirstByEmailId(user.getEmailId());
         if(null != response)
            return new Response<User>("","User Already Exists",null);
         usersRepository.save(user);
+        autoJobRunner.sendMail("email-template", user);
         return new Response<User>("","",user);
     }
 

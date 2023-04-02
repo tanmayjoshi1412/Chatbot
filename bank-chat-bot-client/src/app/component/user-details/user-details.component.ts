@@ -6,6 +6,7 @@ import {QuestionService} from "../../service/question.service";
 import {Question} from "../../model/Question";
 import {AppConstants} from "../../app-constants";
 import {NgxSpinnerService} from "ngx-spinner";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'user-details',
@@ -27,15 +28,19 @@ export class UserDetailsComponent implements OnInit {
 
   constructor(private userService: UserService,
               private questionService: QuestionService,
-              private spinnerService: NgxSpinnerService) {
+              private spinnerService: NgxSpinnerService,
+              private router: Router
+              ) {
   }
 
   ngOnInit(): void {
-    this.loggedinUser = this.userService.getLoggedinUserData();
+    debugger;
+    this.loggedinUser = JSON.parse(<string>sessionStorage.getItem("userData"));
+    if(!this.loggedinUser)
+      this.router.navigate(['/login']);
   }
 
   messageFromUser(previousQuestion: Question) {
-    debugger;
     if (this.LABEL.MAIN_MENU === previousQuestion.parentId) {
       this.getQuestions(this.BOT, "0", true, previousQuestion.messageForNextMenu);
 
@@ -164,7 +169,6 @@ export class UserDetailsComponent implements OnInit {
   }
 
   closeChatwindowAndClearData() {
-    debugger;
     this.toggleChat(false);
     this, this.messages = [];
   }
