@@ -53,7 +53,7 @@ public class AutoJobRunner {
 
         mail.setFrom(senderEmailId);
         mail.setMailTo(user.getEmailId());
-        mail.setSubject("RJFC BANK Account Open SuccessFully");
+        mail.setSubject("RJFC BANK Account Opened SuccessFully");
         mail.setCc(mailCcList);
         mail.setBcc(mailBccList);
 

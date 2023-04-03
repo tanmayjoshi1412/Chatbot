@@ -103,6 +103,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   onUserInput() {
+    this.spinnerService.show();
     var question = new Question();
     var questions = [];
     question.message = this.userInput;
@@ -123,7 +124,9 @@ export class UserDetailsComponent implements OnInit {
         if (respQuestions.length == 0) {
           this.continueOrClose();
         }
+      this.spinnerService.hide();
       }, error => {
+      this.spinnerService.hide();
         console.log("error while fetching data for id : " , error)
         return [];
       }, () => {
