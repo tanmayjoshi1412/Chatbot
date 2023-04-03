@@ -84,7 +84,6 @@ export class CreateUserComponent implements OnInit {
           this.spinnerService.hide();
           this.userData = userData;
           var formData: FormData = new FormData();
-
           this.notificationsAlert.successeNotification({
             title: "Account Requested",
             message: "Please check your email for the account conformation"
